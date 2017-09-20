@@ -41,6 +41,10 @@ module MockViews
   class SectionNameTransformation < MatchView::View
     section(:full_summary) {}
   end
+
+  class DeepObjectIntrospection < MatchView::View
+    attribute 'name.last', as: :last_name
+  end
 end
 
 RSpec.describe MatchView::View do
@@ -96,6 +100,12 @@ RSpec.describe MatchView::View do
       Given(:object) { double }
       Given(:view) { MockViews::SectionNameTransformation.new(object) }
       Then { view.as_json == { fullSummary: {} } }
+    end
+
+    context 'deep object introspection' do
+      Given(:object) { double(name: double(last: 'world')) }
+      Given(:view) { MockViews::DeepObjectIntrospection.new(object) }
+      Then { view.as_json == { lastName: 'world' } }
     end
   end
 end
