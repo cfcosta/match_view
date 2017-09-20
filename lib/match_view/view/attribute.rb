@@ -1,13 +1,24 @@
+require 'active_support/inflector'
+
 module MatchView
   class Attribute
-    attr_reader :name
+    attr_reader :name, :options
 
-    def initialize(name)
+    def initialize(name, options)
       @name = name
+      @options = options
+    end
+
+    def field_name
+      options
+        .fetch(:as) { name }
+        .to_s
+        .camelize(:lower)
+        .to_sym
     end
 
     def render(target)
-      { name => target.public_send(name) }
+      { field_name => target.public_send(name) }
     end
   end
 end

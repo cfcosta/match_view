@@ -5,8 +5,8 @@ module MatchView
         @attributes ||= []
       end
 
-      def attribute(name)
-        attributes << Attribute.new(name)
+      def attribute(name, options = {})
+        attributes << Attribute.new(name, options)
       end
 
       def section(name, &block)
