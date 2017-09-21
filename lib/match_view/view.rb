@@ -12,7 +12,7 @@ module MatchView
     end
 
     def as_json(*)
-      render(target)
+      render(target, self)
     end
   end
 end

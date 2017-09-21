@@ -15,8 +15,12 @@ module MatchView
         .to_sym
     end
 
-    def render(target)
-      { field_name => attributes.inject({}) { |accum, el| accum.merge(el.render(target)) } }
+    def render(target, view_context)
+      {
+        field_name => attributes.inject({}) do |accum, el|
+          accum.merge(el.render(target, view_context))
+        end
+      }
     end
   end
 end

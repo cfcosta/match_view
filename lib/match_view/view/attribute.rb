@@ -17,15 +17,18 @@ module MatchView
         .to_sym
     end
 
-    def send_to(target)
-      name
-        .to_s
-        .split('.')
-        .inject(target) { |obj, method| obj.public_send(method) }
+    def send_to(target, view_context)
+      name.to_s.split('.').inject(target) do |obj, method|
+        if view_context.respond_to?(method)
+          view_context.public_send(method)
+        else
+          obj.public_send(method)
+        end
+      end
     end
 
-    def render(target)
-      { field_name => send_to(target) }
+    def render(target, view_context)
+      { field_name => send_to(target, view_context) }
     end
   end
 end

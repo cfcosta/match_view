@@ -21,9 +21,9 @@ module MatchView
       base.extend(DSL)
     end
 
-    def render(target)
+    def render(target, view_context)
       self.class.attributes.inject({}) do |accum, el|
-        accum.merge(el.render(target))
+        accum.merge(el.render(target, view_context))
       end
     end
   end

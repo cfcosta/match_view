@@ -45,6 +45,14 @@ module MockViews
   class DeepObjectIntrospection < MatchView::View
     attribute 'name.last', as: :last_name
   end
+
+  class MethodOverwrite < MatchView::View
+    attribute :full_name
+
+    def full_name
+      [target.first, target.last].join(' ')
+    end
+  end
 end
 
 RSpec.describe MatchView::View do
@@ -106,6 +114,12 @@ RSpec.describe MatchView::View do
       Given(:object) { double(name: double(last: 'world')) }
       Given(:view) { MockViews::DeepObjectIntrospection.new(object) }
       Then { view.as_json == { lastName: 'world' } }
+    end
+
+    context 'method overwrite' do
+      Given(:object) { double(first: 'hello', last: 'world') }
+      Given(:view) { MockViews::MethodOverwrite.new(object) }
+      Then { view.as_json == { fullName: 'hello world' } }
     end
   end
 end
