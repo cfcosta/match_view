@@ -2,7 +2,15 @@ module MatchView
   module SchemaDefinition
     module DSL
       def attributes
-        @attributes ||= []
+        @attributes ||= if is_a?(Class) && superclass.respond_to?(:attributes)
+                          superclass.attributes.clone
+                        else
+                          []
+                        end
+      end
+
+      def attributes=(value)
+        @attributes = value
       end
 
       def attribute(name, options = {})
@@ -11,8 +19,13 @@ module MatchView
 
       def section(name, &block)
         section = Section.new(name)
-        section.instance_eval(&block)
 
+        if (old_section = attributes.find { |x| x.name == name })
+          attributes.delete(old_section)
+          section.attributes += old_section.attributes
+        end
+
+        section.instance_eval(&block)
         attributes << section
       end
     end

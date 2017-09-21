@@ -53,6 +53,16 @@ module MockViews
       [target.first, target.last].join(' ')
     end
   end
+
+  class Subclassed < OneAttribute
+    attribute :surname
+  end
+
+  class SubclassedSections < SectionWithAttribute
+    section :summary do
+      attribute :surname
+    end
+  end
 end
 
 RSpec.describe MatchView::View do
@@ -120,6 +130,18 @@ RSpec.describe MatchView::View do
       Given(:object) { double(first: 'hello', last: 'world') }
       Given(:view) { MockViews::MethodOverwrite.new(object) }
       Then { view.as_json == { fullName: 'hello world' } }
+    end
+
+    context 'subclassed' do
+      Given(:object) { double(name: 'hello', surname: 'world') }
+      Given(:view) { MockViews::Subclassed.new(object) }
+      Then { view.as_json == { name: 'hello', surname: 'world' } }
+    end
+
+    context 'subclassed sections' do
+      Given(:object) { double(name: 'hello', surname: 'world') }
+      Given(:view) { MockViews::SubclassedSections.new(object) }
+      Then { view.as_json == { summary: { name: 'hello', surname: 'world' } } }
     end
   end
 end
