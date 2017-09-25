@@ -1,6 +1,7 @@
 module MatchView
   class Section
     include SchemaDefinition::DSL
+    include Import::DSL
 
     attr_reader :name
 

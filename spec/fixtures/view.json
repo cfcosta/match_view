@@ -1,0 +1,18 @@
+{
+  "summary": [
+    {
+      "name": "id"
+    },
+    {
+      "name": "active",
+      "as": "is_active"
+    },
+    {
+      "name": "full_name",
+      "as": "name"
+    }
+  ],
+  "foo": {
+    "name": "foo"
+  }
+}
