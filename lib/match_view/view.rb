@@ -3,8 +3,11 @@ require_relative 'view/import'
 require_relative 'view/attribute'
 require_relative 'view/section'
 
+require 'descendants_tracker'
+
 module MatchView
   class View
+    extend DescendantsTracker
     include SchemaDefinition
     include Import
 

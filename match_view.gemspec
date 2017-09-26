@@ -28,6 +28,8 @@ Gem::Specification.new do |spec|
   spec.add_dependency "activesupport", "~> 4"
   spec.add_dependency "multi_json", "~> 1"
   spec.add_dependency "virtus", "~> 1"
+  spec.add_dependency "dry-container", "~> 0.6"
+  spec.add_dependency "descendants_tracker", "~> 0.0.4"
 
   spec.add_development_dependency "bundler", "~> 1.16.a"
   spec.add_development_dependency "rake", "~> 10.0"
