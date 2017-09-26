@@ -1,6 +1,3 @@
-require_relative '../spec_helper'
-require 'match_view/view'
-
 module MockViews
   class Zero < MatchView::View
   end

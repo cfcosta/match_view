@@ -1,6 +1,3 @@
-require_relative '../spec_helper'
-require 'match_view/entity'
-
 module MockEntities
   class Simple < MatchView::Entity
     attribute :foo, String

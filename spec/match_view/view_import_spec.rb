@@ -1,6 +1,3 @@
-require_relative '../spec_helper'
-require 'match_view/view'
-
 RSpec.describe MatchView::View do
   Given(:json_source) { load_fixture('view.json') }
   Given(:yaml_source) { load_fixture('view.yml') }
