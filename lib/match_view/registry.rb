@@ -17,9 +17,11 @@ module MatchView
       @data[val]
     end
 
-    def register(klass)
-      name = class_name_for(klass)
-      @data[name] << [klass, ancestors_count_for(klass)]
+    def register(*classes)
+      classes.each do |klass|
+        name = class_name_for(klass)
+        @data[name] << [klass, ancestors_count_for(klass)]
+      end
     end
 
     def registered?(klass)

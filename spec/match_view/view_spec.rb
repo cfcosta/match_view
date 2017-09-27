@@ -22,8 +22,7 @@ module MockViews
   class NestedEmptySection < MatchView::View
     section(:summary) { section(:identity) {} }
   end
-
-  class NestedSectionWithAttribute < MatchView::View
+class NestedSectionWithAttribute < MatchView::View
     section(:summary) { section(:identity) { attribute :name } }
   end
 
@@ -63,6 +62,14 @@ module MockViews
 end
 
 RSpec.describe MatchView::View do
+  describe '.applies_to?' do
+    Given(:view) { MockViews::Zero }
+    When { view.applies_to Array }
+
+    Then { view.applies_to? Array }
+    Then { !view.applies_to? Object }
+  end
+
   describe '#as_json' do
     context 'empty entity' do
       Given(:view) { MockViews::Zero.new({}) }

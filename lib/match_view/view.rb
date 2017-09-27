@@ -11,6 +11,15 @@ module MatchView
     include SchemaDefinition
     include Import
 
+    def self.applies_to(*classes)
+      @applies_to ||= classes
+    end
+
+    def self.applies_to?(object)
+      klass = object.is_a?(Class) ? object : object.class
+      @applies_to.include?(klass)
+    end
+
     attr_reader :target
 
     def initialize(target)
