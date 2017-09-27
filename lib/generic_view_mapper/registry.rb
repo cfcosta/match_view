@@ -25,7 +25,7 @@ module GenericViewMapper
     end
 
     def registered?(klass)
-      @data.any? { |(h,k)| k.map(&:first).include?(klass) }
+      @data.any? { |(_,k)| k.map(&:first).include?(klass) }
     end
 
     def register_all

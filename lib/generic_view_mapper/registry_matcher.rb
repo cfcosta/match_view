@@ -7,19 +7,21 @@ module GenericViewMapper
     end
 
     def find_entity_for(data)
-      registry[:entities]
-        .sort { |a,b| b.last <=> a.last }
-        .map { |x| x.first }
+      get_list_for(:entities)
         .find { |x| x.applicable?(data) }
     end
 
     def find_view_for(entity)
       klass = entity.is_a?(Class) ? entity.class : entity
 
-      registry[:views]
+      get_list_for(:views)
+        .find { |x| x.applies_to?(klass) }
+    end
+
+    private def get_list_for(key)
+      registry[key]
         .sort { |a,b| b.last <=> a.last }
         .map { |x| x.first }
-        .find { |x| x.applies_to?(klass) }
     end
   end
 end
