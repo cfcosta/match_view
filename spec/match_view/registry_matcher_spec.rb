@@ -1,5 +1,5 @@
 module MockRegistryClasses
-  class Foo < MatchView::Entity
+  class Foo < GenericViewMapper::Entity
     def self.applicable?(data)
       data[:foo]
     end
@@ -11,7 +11,7 @@ module MockRegistryClasses
     end
   end
 
-  class FooView < MatchView::View
+  class FooView < GenericViewMapper::View
     applies_to MockRegistryClasses::Foo, MockRegistryClasses::Bar
   end
 
@@ -20,8 +20,8 @@ module MockRegistryClasses
   end
 end
 
-RSpec.describe MatchView::RegistryMatcher do
-  Given(:registry) { MatchView::Registry.new }
+RSpec.describe GenericViewMapper::RegistryMatcher do
+  Given(:registry) { GenericViewMapper::Registry.new }
   Given(:matcher) { described_class.new(registry) }
 
   When do

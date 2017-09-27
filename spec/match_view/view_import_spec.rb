@@ -1,4 +1,4 @@
-RSpec.describe MatchView::View do
+RSpec.describe GenericViewMapper::View do
   Given(:json_source) { load_fixture('view.json') }
   Given(:yaml_source) { load_fixture('view.yml') }
 

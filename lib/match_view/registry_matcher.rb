@@ -1,4 +1,4 @@
-module MatchView
+module GenericViewMapper
   class RegistryMatcher
     attr_reader :registry
 

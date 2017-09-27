@@ -1,4 +1,4 @@
-module MatchView
+module GenericViewMapper
   module SchemaDefinition
     module DSL
       def attributes

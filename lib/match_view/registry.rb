@@ -1,6 +1,6 @@
 require 'active_support/inflector'
 
-module MatchView
+module GenericViewMapper
   class Registry
     attr_reader :data
 

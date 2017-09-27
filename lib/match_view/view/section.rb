@@ -1,4 +1,4 @@
-module MatchView
+module GenericViewMapper
   class Section
     include SchemaDefinition::DSL
     include Import::DSL

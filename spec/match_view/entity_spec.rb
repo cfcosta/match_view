@@ -1,5 +1,5 @@
 module MockEntities
-  class Simple < MatchView::Entity
+  class Simple < GenericViewMapper::Entity
     attribute :foo, String
     attribute :bar, String
 
@@ -9,7 +9,7 @@ module MockEntities
   end
 end
 
-RSpec.describe MatchView::Entity do
+RSpec.describe GenericViewMapper::Entity do
   describe '.applicable?' do
     Then do
       expect { described_class.applicable?(nil) }

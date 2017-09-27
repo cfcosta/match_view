@@ -1,7 +1,7 @@
 require 'virtus'
 require 'descendants_tracker'
 
-module MatchView
+module GenericViewMapper
   class Entity
     include Virtus.model
     extend DescendantsTracker

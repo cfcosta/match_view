@@ -1,11 +1,11 @@
-require 'match_view/version'
-require 'match_view/view'
-require 'match_view/entity'
-require 'match_view/registry'
-require 'match_view/registry_matcher'
-require 'match_view/railtie' if defined?(Rails::Railtie)
+require 'generic_view_mapper/version'
+require 'generic_view_mapper/view'
+require 'generic_view_mapper/entity'
+require 'generic_view_mapper/registry'
+require 'generic_view_mapper/registry_matcher'
+require 'generic_view_mapper/railtie' if defined?(Rails::Railtie)
 
-module MatchView
+module GenericViewMapper
   def registry
     @registry ||= clear_registry
   end

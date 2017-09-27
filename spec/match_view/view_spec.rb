@@ -1,48 +1,48 @@
 module MockViews
-  class Zero < MatchView::View
+  class Zero < GenericViewMapper::View
   end
 
-  class OneAttribute < MatchView::View
+  class OneAttribute < GenericViewMapper::View
     attribute :name
   end
 
-  class TwoAttributes < MatchView::View
+  class TwoAttributes < GenericViewMapper::View
     attribute :name
     attribute :description
   end
 
-  class EmptySection < MatchView::View
+  class EmptySection < GenericViewMapper::View
     section(:summary) {}
   end
 
-  class SectionWithAttribute < MatchView::View
+  class SectionWithAttribute < GenericViewMapper::View
     section(:summary) { attribute :name }
   end
 
-  class NestedEmptySection < MatchView::View
+  class NestedEmptySection < GenericViewMapper::View
     section(:summary) { section(:identity) {} }
   end
-class NestedSectionWithAttribute < MatchView::View
+class NestedSectionWithAttribute < GenericViewMapper::View
     section(:summary) { section(:identity) { attribute :name } }
   end
 
-  class AliasedAttribute < MatchView::View
+  class AliasedAttribute < GenericViewMapper::View
     attribute :name, as: :fullname
   end
 
-  class AttributeNameTransformation < MatchView::View
+  class AttributeNameTransformation < GenericViewMapper::View
     attribute :full_name
   end
 
-  class SectionNameTransformation < MatchView::View
+  class SectionNameTransformation < GenericViewMapper::View
     section(:full_summary) {}
   end
 
-  class DeepObjectIntrospection < MatchView::View
+  class DeepObjectIntrospection < GenericViewMapper::View
     attribute 'name.last', as: :last_name
   end
 
-  class MethodOverwrite < MatchView::View
+  class MethodOverwrite < GenericViewMapper::View
     attribute :full_name
 
     def full_name
@@ -61,7 +61,7 @@ class NestedSectionWithAttribute < MatchView::View
   end
 end
 
-RSpec.describe MatchView::View do
+RSpec.describe GenericViewMapper::View do
   describe '.applies_to?' do
     Given(:view) { MockViews::Zero }
     When { view.applies_to Array }

@@ -2,7 +2,7 @@ require "bundler/setup"
 
 require 'rspec/given'
 
-require "match_view"
+require "generic_view_mapper"
 
 require_relative 'support/fixtures'
 

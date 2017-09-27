@@ -3,7 +3,7 @@ require 'yaml'
 require 'multi_json'
 require 'active_support/core_ext/hash/keys'
 
-module MatchView
+module GenericViewMapper
   module Import
     def self.included(base)
       base.extend DSL

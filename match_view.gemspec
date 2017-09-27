@@ -1,11 +1,10 @@
-
 lib = File.expand_path("../lib", __FILE__)
 $LOAD_PATH.unshift(lib) unless $LOAD_PATH.include?(lib)
-require "match_view/version"
+require "generic_view_mapper/version"
 
 Gem::Specification.new do |spec|
-  spec.name          = "match_view"
-  spec.version       = MatchView::VERSION
+  spec.name          = "generic_view_mapper"
+  spec.version       = GenericViewMapper::VERSION
   spec.authors       = ["Cainã Costa"]
   spec.email         = ["cacosta@redhat.com"]
 

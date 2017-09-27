@@ -1,12 +1,12 @@
 module MockEntities
-  class SimpleEntity < MatchView::Entity
+  class SimpleEntity < GenericViewMapper::Entity
   end
 
-  class SimpleView < MatchView::View
+  class SimpleView < GenericViewMapper::View
   end
 end
 
-RSpec.describe MatchView::Registry do
+RSpec.describe GenericViewMapper::Registry do
   Given(:registry) { described_class.new }
 
   describe '#register' do

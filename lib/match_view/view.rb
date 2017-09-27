@@ -5,7 +5,7 @@ require_relative 'view/section'
 
 require 'descendants_tracker'
 
-module MatchView
+module GenericViewMapper
   class View
     extend DescendantsTracker
     include SchemaDefinition
