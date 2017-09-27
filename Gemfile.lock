@@ -1,7 +1,7 @@
 PATH
   remote: .
   specs:
-    match_view (0.1.0)
+    generic_view_mapper (0.1.0)
       activesupport (~> 4)
       descendants_tracker (~> 0.0.4)
       dry-container (~> 0.6)
@@ -11,7 +11,7 @@ PATH
 GEM
   remote: https://rubygems.org/
   specs:
-    activesupport (4.2.9)
+    activesupport (4.2.10)
       i18n (~> 0.7)
       minitest (~> 5.1)
       thread_safe (~> 0.3, >= 0.3.4)
@@ -79,7 +79,7 @@ PLATFORMS
 
 DEPENDENCIES
   bundler (~> 1.16.a)
-  match_view!
+  generic_view_mapper!
   pry-byebug (~> 3.5)
   rake (~> 10.0)
   rspec (~> 3.0)
