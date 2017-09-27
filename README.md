@@ -1,8 +1,8 @@
-# MatchView
+# GenericViewMapper
 
-![](https://travis-ci.org/cfcosta/match_view.svg?branch=master)
+![](https://travis-ci.org/cfcosta/generic_view_mapper.svg?branch=master)
 
-Welcome to your new gem! In this directory, you'll find the files you need to be able to package up your Ruby library into a gem. Put your Ruby code in the file `lib/match_view`. To experiment with that code, run `bin/console` for an interactive prompt.
+Welcome to your new gem! In this directory, you'll find the files you need to be able to package up your Ruby library into a gem. Put your Ruby code in the file `lib/generic_view_mapper`. To experiment with that code, run `bin/console` for an interactive prompt.
 
 TODO: Delete this and the text above, and describe your gem
 
@@ -11,7 +11,7 @@ TODO: Delete this and the text above, and describe your gem
 Add this line to your application's Gemfile:
 
 ```ruby
-gem 'match_view'
+gem 'generic_view_mapper'
 ```
 
 And then execute:
@@ -20,7 +20,7 @@ And then execute:
 
 Or install it yourself as:
 
-    $ gem install match_view
+    $ gem install generic_view_mapper
 
 ## Usage
 
@@ -34,7 +34,7 @@ To install this gem onto your local machine, run `bundle exec rake install`. To 
 
 ## Contributing
 
-Bug reports and pull requests are welcome on GitHub at https://github.com/[USERNAME]/match_view.
+Bug reports and pull requests are welcome on GitHub at https://github.com/[USERNAME]/generic_view_mapper.
 
 ## License
 
