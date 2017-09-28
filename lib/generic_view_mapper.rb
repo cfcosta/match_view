@@ -3,16 +3,21 @@ require 'generic_view_mapper/view'
 require 'generic_view_mapper/entity'
 require 'generic_view_mapper/registry'
 require 'generic_view_mapper/registry_matcher'
-require 'generic_view_mapper/railtie' if defined?(Rails::Railtie)
+
+if defined?(Rails::Railtie)
+  require 'generic_view_mapper/rails/autoregister'
+  require 'generic_view_mapper/railtie'
+end
 
 module GenericViewMapper
-  def registry
-    @registry ||= clear_registry
-  end
-  module_function :registry
+  extend self
 
-  def clear_registry
-    @registry = Registry.new
+  def registry
+    Thread.current[:gvm_registry] ||= Registry.new.tap(&:register_all)
   end
-  module_function :clear_registry
+
+  def render(data)
+    matcher = RegistryMapper.new(registry)
+    matcher.find_view_for(matcher.find_entity_for(data))
+  end
 end

@@ -9,6 +9,12 @@ end
 RSpec.describe GenericViewMapper::Registry do
   Given(:registry) { described_class.new }
 
+  describe '#reload' do
+    Given { expect(registry).to receive(:register_all) }
+    When { registry.reload }
+    Then { registry.data.empty? }
+  end
+
   describe '#register' do
     When { registry.register(MockEntities::SimpleEntity) }
     Then { registry[:entities] == [[MockEntities::SimpleEntity, 3]] }

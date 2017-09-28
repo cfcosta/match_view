@@ -17,6 +17,11 @@ module GenericViewMapper
       @data[val]
     end
 
+    def reload
+      data.clear
+      register_all
+    end
+
     def register(*classes)
       classes.each do |klass|
         name = class_name_for(klass)
