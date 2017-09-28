@@ -67,7 +67,9 @@ RSpec.describe GenericViewMapper::View do
     When { view.applies_to Array }
 
     Then { view.applies_to? Array }
-    Then { !view.applies_to? Object }
+    Then { view.applies_to? Array.new }
+    Then { !view.applies_to? Hash }
+    Then { !view.applies_to? Hash.new }
   end
 
   describe '#as_json' do

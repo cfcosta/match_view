@@ -12,10 +12,8 @@ module GenericViewMapper
     end
 
     def find_view_for(entity)
-      klass = entity.is_a?(Class) ? entity.class : entity
-
       get_list_for(:views)
-        .find { |x| x.applies_to?(klass) }
+        .find { |x| x.applies_to?(entity) }
     end
 
     private def get_list_for(key)
