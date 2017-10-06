@@ -16,8 +16,16 @@ module GenericViewMapper
     Thread.current[:gvm_registry] ||= Registry.new.tap(&:register_all)
   end
 
-  def render(data)
-    matcher = RegistryMapper.new(registry)
-    matcher.find_view_for(matcher.find_entity_for(data))
+  def matcher
+    Thread.current[:gvm_matcher] ||= RegistryMatcher.new(registry)
+  end
+
+  def render(*datas)
+    processed = datas.map do |data|
+      entity = data.is_a?(Hash) ? matcher.find_entity_for(data) : data
+      matcher.find_view_for(entity).new(entity)
+    end
+
+    processed.size == 1 ? processed.first : processed
   end
 end
